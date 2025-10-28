@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Reels Downloader</title>
+<style>
+  body { font-family: Arial; background:#f9fafb; text-align:center; padding:40px; }
+  h1 { color:#111; }
+  input { width:80%; padding:10px; border-radius:8px; border:1px solid #ccc; margin:10px 0; }
+  button { background:#007bff; color:#fff; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; }
+  button:hover { background:#0056b3; }
+  video { width:90%; margin-top:20px; border-radius:12px; }
+  .info { background:#fff; padding:20px; border-radius:10px; margin-top:20px; text-align:left; box-shadow:0 0 5px rgba(0,0,0,0.1); }
+  .hashtags { color:#007bff; }
+</style>
+</head>
+<body>
+  <h1>📸 Instagram Reels Downloader</h1>
+  <input id="url" placeholder="Paste Instagram Reel link..."><br>
+  <button id="downloadBtn">Download</button>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', async () => {
+      const url = document.getElementById('url').value.trim();
+      const resultDiv = document.getElementById('result');
+      if (!url) return alert('Please enter a valid URL');
+
+      resultDiv.innerHTML = '<p>Fetching info...</p>';
+      const res = await fetch('/api/download', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ url })
+      });
+      const data = await res.json();
+
+      if (!data.ok) {
+        resultDiv.innerHTML = `<p style='color:red;'>❌ ${data.error}</p>`;
+        return;
+      }
+
+      resultDiv.innerHTML = `
+        <video controls src='${data.video_url}'></video>
+        <div class='info'>
+          <p><strong>Caption:</strong> ${data.caption || 'No caption found.'}</p>
+          <p><strong>Hashtags:</strong> <span class='hashtags'>${(data.hashtags || []).join(' ')}</span></p>
+          <a href='${data.video_url}' download><button>⬇️ Download Video</button></a>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
