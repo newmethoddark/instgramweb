@@ -46,4 +46,31 @@ export default function Home() {
         .container {
           text-align: center;
           padding: 40px;
-          font-family: Arial, sans
+          font-family: Arial, sans-serif;
+        }
+        input {
+          width: 80%;
+          padding: 10px;
+          margin: 10px;
+          border: 2px solid #ccc;
+          border-radius: 8px;
+        }
+        button {
+          padding: 10px 20px;
+          background: #ff3e6c;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+        .output {
+          margin-top: 20px;
+        }
+        video {
+          margin-top: 10px;
+          border-radius: 10px;
+        }
+      `}</style>
+    </div>
+  );
+          }
