@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "curl -L -o yt-dlp https://github.com/newmethoddark/instgramweb.git && chmod +x yt-dlp"
+    "postinstall": "curl -L -o yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp && chmod +x yt-dlp"
   },
   "dependencies": {
     "next": "14.2.4",
