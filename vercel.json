@@ -1,11 +1,15 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/download.js", "use": "@vercel/node" },
-    { "src": "index.html", "use": "@vercel/static" }
-  ],
+  "version": 3,
+  "buildCommand": "npm install",
+  "outputDirectory": ".",
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "src": "/api/(.*)",
+      "dest": "api/download.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }
