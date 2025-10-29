@@ -1,9 +1,12 @@
 {
-  "name": "instagram-reels-downloader",
+  "name": "instagram-reel-downloader",
   "version": "1.0.0",
-  "main": "index.html",
+  "main": "api/download.js",
+  "scripts": {
+    "dev": "vercel dev"
+  },
   "dependencies": {
-    "express": "^4.19.2",
-    "yt-dlp-wrap": "^2.3.11"
+    "puppeteer-core": "^21.0.0",
+    "chrome-aws-lambda": "^10.1.0"
   }
 }
