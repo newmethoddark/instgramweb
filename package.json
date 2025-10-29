@@ -1,5 +1,18 @@
-"dependencies": {
-  "puppeteer-core": "10.1.0",
-  "chrome-aws-lambda": "10.1.0",
-  ...
+{
+  "name": "instagram-reel-downloader",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "postinstall": "curl -L -o yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp && chmod +x yt-dlp"
+  },
+  "dependencies": {
+    "next": "14.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "puppeteer-core": "10.1.0",
+    "chrome-aws-lambda": "10.1.0"
+  }
 }
